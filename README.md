@@ -1,5 +1,5 @@
 # Parents Sleeping
-The Game is very fun, challenging and teaches.
+The Game is very fun, challenging and teaches.<br/>
 <ins>Purpose of the game:</ins><br/>
 The purpose of the game is to get out of the house without waking the parents who sleep in their bedroom.<br/>
 

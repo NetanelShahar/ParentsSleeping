@@ -1,13 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class SimpleSampleCharacterControl : MonoBehaviour
 {
+
+
+    public GameObject live1, live2 , live3 , live4 ,live5; 
+    private List<GameObject> lives ;
+    private int liveIndex = 4 ;
+
+
+    void Start() {
+        lives  = new List<GameObject>();
+        lives.Add(live1);
+        lives.Add(live2);
+        lives.Add(live3);
+        lives.Add(live4); 
+        lives.Add(live5);
+    }
     public void Initialize(GameObject character)
     {
         m_animator = character.GetComponent<Animator>();
         m_rigidBody = character.GetComponent<Rigidbody>();
-    }
+        
+        }
 
     private enum ControlMode
     {
@@ -33,7 +50,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     private float m_currentV = 0;
     private float m_currentH = 0;
 
-    private readonly float m_interpolation = 10;
+    private readonly float m_interpolation = 2;
     private readonly float m_walkScale = 0.33f;
     private readonly float m_backwardsWalkScale = 0.16f;
     private readonly float m_backwardRunScale = 0.66f;
@@ -56,6 +73,18 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "toy")
+        {
+            if (liveIndex < 1) { 
+                SceneManager.LoadScene("GameOver");
+             }
+            else {
+                 Destroy(lives[liveIndex]);
+                 liveIndex = liveIndex - 1; 
+                 
+                 }
+            
+        }
         ContactPoint[] contactPoints = collision.contacts;
         for(int i = 0; i < contactPoints.Length; i++)
         {
@@ -71,6 +100,7 @@ public class SimpleSampleCharacterControl : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
+     
         ContactPoint[] contactPoints = collision.contacts;
         bool validSurfaceNormal = false;
         for (int i = 0; i < contactPoints.Length; i++)
@@ -209,5 +239,12 @@ public class SimpleSampleCharacterControl : MonoBehaviour
         {
             m_animator.SetTrigger("Jump");
         }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.tag == "toy")
+        {
+            Debug.Log("Helllllloo my name is daniel abergel");
+        }     
     }
 }

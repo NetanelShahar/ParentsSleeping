@@ -8,7 +8,7 @@ public class MoveObjectController : MonoBehaviour
 	private Animator anim;
 	private Camera fpsCam;
 	private GameObject player;
-
+	
 	private const string animBoolName = "isOpen_Obj_";
 
 	private bool playerEntered;
@@ -23,7 +23,7 @@ public class MoveObjectController : MonoBehaviour
 	{
 		//Initialize moveDrawController if script is enabled.
 		player = GameObject.FindGameObjectWithTag("Player");
-
+		
 		fpsCam = Camera.main;
 		if (fpsCam == null)	//a reference to Camera is required for rayasts
 		{
@@ -42,12 +42,15 @@ public class MoveObjectController : MonoBehaviour
 		setupGui();
 
 	}
-		
-	void OnTriggerEnter(Collider other)
+   
+
+
+    void OnTriggerEnter(Collider other)
 	{		
 		if (other.gameObject == player)		//player has collided with trigger
 		{			
 			playerEntered = true;
+			
 
 		}
 	}

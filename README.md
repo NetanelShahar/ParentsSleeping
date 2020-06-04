@@ -22,4 +22,11 @@ In addition, it is more difficult to get out of the house, the house grows and i
 In addition that the game is fun and challenging it is also educational as well, the game is designed to teach children to respect their parents and not make noise when they sleep.<br/>
 The game was created with the aim of educating children without feeling that they are being educated, which will make it more entertaining for the children.<br/>
 
+### The game start with instructions:
+![HowToPlay](https://user-images.githubusercontent.com/44839974/83778211-102cdb80-a693-11ea-832d-75f58434df1c.jpeg)
+
+### The player:
+![Player](https://user-images.githubusercontent.com/44839974/83778335-3eaab680-a693-11ea-9d1a-d3598a0c8221.jpeg)
+
+
 Reference to the code of the player: https://github.com/netanelbenis/ParentsSleeping/blob/92ea95448e9ff65f3e9c6ce1dadb914224db5037/Assets/Supercyan%20Character%20Pack%20Free%20Sample/Scripts/SimpleSampleCharacterControl.cs#L5

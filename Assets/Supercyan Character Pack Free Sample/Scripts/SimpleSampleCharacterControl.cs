@@ -240,11 +240,4 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             m_animator.SetTrigger("Jump");
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.tag == "toy")
-        {
-            Debug.Log("Helllllloo my name is daniel abergel");
-        }     
-    }
 }

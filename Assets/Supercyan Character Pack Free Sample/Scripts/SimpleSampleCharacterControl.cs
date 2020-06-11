@@ -4,27 +4,22 @@ using UnityEngine.SceneManagement;
 
 public class SimpleSampleCharacterControl : MonoBehaviour
 {
+    public int maxHealth = 5;
+	public int currentHealth;
 
-
-    public GameObject live1, live2 , live3 , live4 ,live5; 
-    private List<GameObject> lives ;
-    private int liveIndex = 4 ;
-
+	public HealthBar healthBar;
 
     void Start() {
-        lives  = new List<GameObject>();
-        lives.Add(live1);
-        lives.Add(live2);
-        lives.Add(live3);
-        lives.Add(live4); 
-        lives.Add(live5);
+
+        currentHealth = maxHealth;
+		healthBar.SetMaxHealth(maxHealth);
     }
     public void Initialize(GameObject character)
     {
         m_animator = character.GetComponent<Animator>();
         m_rigidBody = character.GetComponent<Rigidbody>();
         
-        }
+    }
 
     private enum ControlMode
     {
@@ -75,14 +70,14 @@ public class SimpleSampleCharacterControl : MonoBehaviour
     {
         if (collision.gameObject.tag == "toy")
         {
-            if (liveIndex < 1) { 
+            if (currentHealth < 1)
+            { 
                 SceneManager.LoadScene("GameOver");
-             }
-            else {
-                 Destroy(lives[liveIndex]);
-                 liveIndex = liveIndex - 1; 
-                 
-                 }
+            }
+            else
+            {
+                TakeDamage(1);
+            }
             
         }
         ContactPoint[] contactPoints = collision.contacts;
@@ -97,6 +92,13 @@ public class SimpleSampleCharacterControl : MonoBehaviour
             }
         }
     }
+
+    void TakeDamage(int damage)
+	{
+		currentHealth -= damage;
+
+		healthBar.SetHealth(currentHealth);
+	}
 
     private void OnCollisionStay(Collision collision)
     {
